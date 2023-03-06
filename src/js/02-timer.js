@@ -53,7 +53,7 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-StartTimer = () => {
+const StartTimer = () => {
   buttonStart.disabled = true;
   const updateTimerInterval = setInterval(() => {
     const currentTime = new Date();
