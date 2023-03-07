@@ -58,20 +58,21 @@ const StartTimer = () => {
   const updateTimerInterval = setInterval(() => {
     const currentTime = new Date();
     deltaTime = startTime.getTime() - currentTime;
+    console.log(deltaTime);
     console.log(convertMs(deltaTime));
-    const { days, hours, minutes, seconds } = convertMs(deltaTime);
-
-    updateTimer({ days, hours, minutes, seconds });
-
-    if (deltaTime < 0) {
+    const timeObj = convertMs(deltaTime);
+    if (deltaTime <  1000) {
       clearInterval(updateTimerInterval);
       timerEl.style.color = 'red';
     }
+    updateTimer(timeObj);
+
+    
   }, 1000);
 };
 
 function updateTimer(timeObj) {
-  dayEl.textContent = timeObj.days;
+  dayEl.textContent = pad(timeObj.days);
   hoursEL.textContent = pad(timeObj.hours);
   minutesEL.textContent = pad(timeObj.minutes);
   secondsEL.textContent = pad(timeObj.seconds);
